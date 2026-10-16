@@ -92,7 +92,9 @@ fn render_parse(
     column: &Option<u32>,
     message: &str,
 ) -> String {
-    let mut location = format!("`{}`", path.display());
+    // The whole `path:line:column` is one quoted token, the way compilers print
+    // a position, so it can be copied out and searched for as it stands.
+    let mut location = path.display().to_string();
 
     if let Some(line) = line {
         location.push_str(&format!(":{line}"));
@@ -100,6 +102,8 @@ fn render_parse(
             location.push_str(&format!(":{column}"));
         }
     }
+
+    let location = format!("`{location}`");
 
     let field = field
         .map(|field| format!(" (field `{field}`)"))
