@@ -1,0 +1,24 @@
+[package]
+name = "inox-config"
+description = "Configuration model and TOML parsing for the Inox desktop"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "BSD-3-Clause"
+repository = "https://github.com/Inox-desktop/inox-config"
+readme = "README.md"
+keywords = ["wayland", "desktop", "inox"]
+categories = ["desktop"]
+
+[dependencies]
+tracing = "0.1"
+thiserror = "2"
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+all = "warn"
